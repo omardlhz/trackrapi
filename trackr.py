@@ -12,7 +12,7 @@ def hello():
 def api_search():
     if 'name' in request.args:
        id = youtube_search(request.args['name'])
-       ydl_opts = {'format': '140'}
+       ydl_opts = {'format': 'best'}
        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             result = ydl.extract_info(id, download=False)
        return jsonify(url=result['url'], duration=result['duration'])
